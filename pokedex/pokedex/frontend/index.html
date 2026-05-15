@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokédex - Pokémon Search Engine</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">Pokédex</span>
+            </div>
+            <p class="header-subtitle">Search any Pokémon instantly</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="search-section">
+            <form class="search-form" id="searchForm" autocomplete="off">
+                <div class="search-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        class="search-input"
+                        placeholder="Search Pokémon by name... e.g. pikachu"
+                        maxlength="100"
+                        aria-label="Search Pokémon"
+                    />
+                    <button type="submit" class="search-btn" id="searchBtn">Search</button>
+                </div>
+                <div class="search-suggestions" id="searchSuggestions"></div>
+            </form>
+
+            <div class="quick-search">
+                <span class="quick-label">Try:</span>
+                <button class="quick-btn" data-name="pikachu">Pikachu</button>
+                <button class="quick-btn" data-name="charizard">Charizard</button>
+                <button class="quick-btn" data-name="mewtwo">Mewtwo</button>
+                <button class="quick-btn" data-name="bulbasaur">Bulbasaur</button>
+                <button class="quick-btn" data-name="gengar">Gengar</button>
+            </div>
+        </section>
+
+        <div class="loader-container" id="loader" aria-live="polite" aria-label="Loading">
+            <div class="pokeball-loader">
+                <div class="pokeball">
+                    <div class="pokeball-top"></div>
+                    <div class="pokeball-middle"></div>
+                    <div class="pokeball-bottom"></div>
+                    <div class="pokeball-button"></div>
+                </div>
+            </div>
+            <p class="loader-text">Searching Pokédex...</p>
+        </div>
+
+        <div class="error-container" id="errorContainer" role="alert" aria-live="assertive">
+            <div class="error-card">
+                <span class="error-icon">😵</span>
+                <h3 class="error-title" id="errorTitle">Oops!</h3>
+                <p class="error-message" id="errorMessage">Something went wrong.</p>
+                <button class="retry-btn" id="retryBtn">Try Again</button>
+            </div>
+        </div>
+
+        <section class="pokemon-section" id="pokemonSection">
+            <div class="pokemon-card" id="pokemonCard">
+                <div class="card-header" id="cardHeader">
+                    <div class="pokemon-id" id="pokemonId">#001</div>
+                    <div class="cache-badge" id="cacheBadge">⚡ Cached</div>
+                </div>
+
+                <div class="card-body">
+                    <div class="image-container">
+                        <img
+                            src=""
+                            alt="Pokemon Image"
+                            id="pokemonImage"
+                            class="pokemon-image"
+                            loading="lazy"
+                        />
+                        <button class="shiny-toggle" id="shinyToggle" title="Toggle Shiny">✨ Shiny</button>
+                    </div>
+
+                    <div class="pokemon-info">
+                        <h2 class="pokemon-name" id="pokemonName">Bulbasaur</h2>
+
+                        <div class="types-container" id="typesContainer"></div>
+
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Height</span>
+                                <span class="info-value" id="pokemonHeight">—</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Weight</span>
+                                <span class="info-value" id="pokemonWeight">—</span>
+                            </div>
+                        </div>
+
+                        <div class="abilities-section">
+                            <h4 class="section-title">Abilities</h4>
+                            <div class="abilities-container" id="abilitiesContainer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-section">
+                    <h4 class="section-title">Base Stats</h4>
+                    <div class="stats-container" id="statsContainer"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="history-section" id="historySection">
+            <h3 class="history-title">Recent Searches</h3>
+            <div class="history-list" id="historyList"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Data provided by <a href="https://pokeapi.co" target="_blank" rel="noopener">PokéAPI</a> · Built with Spring Boot &amp; Vanilla JS</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
